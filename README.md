@@ -32,7 +32,9 @@ amqplib.connect().then(function (conn) {
 
 // Consumer
 amqplib.connect().then(function (conn) {
-  return amqpjson.consumer(conn, queue, exchange, bindKey)
+  return amqpjson.consumer(conn, queue, exchange, bindKey, {
+    messageTtl: 1000
+  })
 }).then(function (consumer) {
   consumer.consumeStart(handler)
 })
@@ -46,7 +48,7 @@ function handler (message) {
 
 Create a Channel intended for consuming JSON messages.
 
-`amqpjson.consumer(connection, [queue, [exchange, bindKey]])`
+`amqpjson.consumer(connection, [queue, [exchange, bindKey, [options]]])`
 
 Returns a Promise for a Channel:
 
@@ -56,6 +58,8 @@ Returns a Promise for a Channel:
   - non-empty: declared as durable=true, autoDelete=false, no expiration
 - exchange: exchange name, asserted as 'topic' exchange
 - bindKey: key used to bind exchange to queue, skipped if empty or no exchange
+- options: additional options to extend (or override) the defaults which are
+  based on queue name (e.g. set a named queue that expires)
 
 The Channel returned is a regular Channel from amqplib. However, it has an
 additional method:
@@ -79,6 +83,7 @@ following properties:
 - exchange: exchange name (if given)
 - bindKey: binding key (if given)
 - consumerTag: consumer tag obtained **after** calling `consumeStart()`
+- options: options used in `channel.assertQueue()` call
 
 ## Publisher
 
