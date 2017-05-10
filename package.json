@@ -1,0 +1,31 @@
+{
+  "name": "amqpjson",
+  "version": "1.0.0",
+  "description": "helpers for JSON messages over AMQP",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha lib/test.js"
+  },
+  "keywords": [
+    "amqp",
+    "json"
+  ],
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "lodash.assign": "^4.2.0",
+    "mustache": "^2.3.0"
+  },
+  "peerDependencies": {
+    "amqplib": "^0.5.1"
+  },
+  "devDependencies": {
+    "amqplib": "^0.5.1",
+    "should": "^11.2.1"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "repository": "github:typeduck/amqpjson",
+  "author": "Ruquay K Calloway <typeduck@typeduck.net> (https://github.com/typeduck)",
+  "license": "MIT"
+}
