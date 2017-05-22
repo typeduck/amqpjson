@@ -57,7 +57,9 @@ Returns a Promise for a Channel:
   - empty: declared as durable=false, autoDelete=true, expires=60000
   - non-empty: declared as durable=true, autoDelete=false, no expiration
 - exchange: exchange name, asserted as 'topic' exchange
-- bindKey: key used to bind exchange to queue, skipped if empty or no exchange
+- bindKey: used to bind exchange to queue, skipped if empty or no exchange
+  - single string is OK
+  - array of strings is OK (all will be bound)
 - options: additional options to extend (or override) the defaults which are
   based on queue name (e.g. set a named queue that expires)
 
@@ -81,7 +83,8 @@ following properties:
 
 - queue: queue name (given or generated)
 - exchange: exchange name (if given)
-- bindKey: binding key (if given)
+- bindKeys: list of all binding keys (if given)
+- bindKey: first binding key (if given, for backwards compatibility)
 - consumerTag: consumer tag obtained **after** calling `consumeStart()`
 - options: options used in `channel.assertQueue()` call
 
