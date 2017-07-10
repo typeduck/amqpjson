@@ -33,7 +33,8 @@ amqplib.connect().then(function (conn) {
 // Consumer
 amqplib.connect().then(function (conn) {
   return amqpjson.consumer(conn, queue, exchange, bindKey, {
-    messageTtl: 1000
+    messageTtl: 1000,
+    parseDates: true /* not passed to amqplib */
   })
 }).then(function (consumer) {
   consumer.consumeStart(handler)
@@ -62,6 +63,8 @@ Returns a Promise for a Channel:
   - array of strings is OK (all will be bound)
 - options: additional options to extend (or override) the defaults which are
   based on queue name (e.g. set a named queue that expires)
+  - parseDates: if this is set to `true`, the consumer will recognize serialized
+    Date objects and recreate them
 
 The Channel returned is a regular Channel from amqplib. However, it has an
 additional method:
@@ -87,6 +90,7 @@ following properties:
 - bindKey: first binding key (if given, for backwards compatibility)
 - consumerTag: consumer tag obtained **after** calling `consumeStart()`
 - options: options used in `channel.assertQueue()` call
+- parseDates: if this was set, the flag is present
 
 ## Publisher
 
