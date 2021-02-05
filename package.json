@@ -11,15 +11,15 @@
     "json"
   ],
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "mustache": "^2.3.0"
+    "bluebird": "^3.7.2",
+    "mustache": "^4.1.0"
   },
   "peerDependencies": {
-    "amqplib": "^0.5.1"
+    "amqplib": "^0.6.0"
   },
   "devDependencies": {
-    "amqplib": "^0.5.1",
-    "should": "^11.2.1"
+    "amqplib": "^0.6.0",
+    "should": "^13.2.3"
   },
   "engines": {
     "node": ">=4.0.0"
