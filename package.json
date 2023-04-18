@@ -15,10 +15,10 @@
     "mustache": "^4.1.0"
   },
   "peerDependencies": {
-    "amqplib": "^0.6.0"
+    "amqplib": "^0.10.3"
   },
   "devDependencies": {
-    "amqplib": "^0.6.0",
+    "amqplib": "^0.10.3",
     "should": "^13.2.3"
   },
   "engines": {
